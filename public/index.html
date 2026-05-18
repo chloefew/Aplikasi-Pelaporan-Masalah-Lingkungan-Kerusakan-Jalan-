@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aplikasi Pelaporan Kerusakan Jalan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Laporan Kerusakan Jalan</h1>
+    <p>Laporkan kerusakan jalan dengan lokasi GPS dan foto secara realtime.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Buat Laporan Baru</h2>
+      <form id="report-form">
+        <label for="place">Lokasi / Nama Jalan</label>
+        <input type="text" id="place" name="place" placeholder="Contoh: Jalan Raya Sudirman" />
+
+        <label for="description">Deskripsi Kerusakan</label>
+        <textarea id="description" name="description" rows="4" placeholder="Contoh: Jalan berlubang, retak, atau tergenang air..."></textarea>
+
+        <div class="row">
+          <div>
+            <label>GPS</label>
+            <div class="location-row">
+              <button type="button" id="btn-get-location">Dapatkan Lokasi</button>
+              <span id="location-message">Tekan untuk mengambil koordinat GPS.</span>
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" id="latitude" name="latitude" />
+        <input type="hidden" id="longitude" name="longitude" />
+
+        <label for="photo">Foto Bukti Kerusakan</label>
+        <input type="file" id="photo" name="photo" accept="image/*" capture="environment" required />
+
+        <div class="actions">
+          <button type="submit">Kirim Laporan</button>
+        </div>
+        <p id="status" class="status"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Riwayat Laporan</h2>
+      <div id="reports-list" class="reports-list">Memuat laporan...</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Gunakan aplikasi ini untuk membantu pemerintah memperbaiki kondisi jalan.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
