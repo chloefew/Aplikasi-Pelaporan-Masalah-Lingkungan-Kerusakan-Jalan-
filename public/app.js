@@ -18,6 +18,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Map & groups
+  let map, markersLayer;
+
+  const initMap = () => {
+    map = L.map('map').setView([-6.200000, 106.816666], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    markersLayer = L.markerClusterGroup();
+    map.addLayer(markersLayer);
+  };
+
+  const loadGroups = async () => {
+    try {
+      const res = await fetch('/api/groups');
+      const groups = await res.json();
+      renderGroups(groups);
+    } catch (err) {
+      console.error('Gagal memuat groups', err);
+    }
+  };
+
+  const renderGroups = (groups) => {
+    markersLayer.clearLayers();
+    groups.forEach(g => {
+      const el = L.marker([g.latitude, g.longitude], {
+        title: `${g.category} • ${g.count} laporan`
+      });
+
+      const popupHtml = `
+        <div style="min-width:200px">
+          <strong>${g.category}</strong><br/>
+          ${g.count} laporan • terakhir: ${new Date(g.lastReportAt).toLocaleString('id-ID')}<br/>
+          <button data-id="${g.id}" class="btn-confirm">Saya juga melaporkan</button>
+        </div>
+      `;
+
+      el.bindPopup(popupHtml);
+      markersLayer.addLayer(el);
+    });
+  };
+
+  // Delegate click for confirm buttons inside popups
+  document.addEventListener('click', async (e) => {
+    if (e.target && e.target.classList.contains('btn-confirm')) {
+      const id = e.target.getAttribute('data-id');
+      try {
+        const res = await fetch(`/api/groups/${id}/confirm`, { method: 'POST' });
+        if (!res.ok) throw new Error('Gagal konfirmasi');
+        await loadGroups();
+        await loadReports();
+        alert('Terima kasih, konfirmasi Anda tercatat.');
+      } catch (err) {
+        alert('Gagal mengirim konfirmasi.');
+      }
+    }
+  });
+
   const renderReports = (reports) => {
     if (!Array.isArray(reports) || reports.length === 0) {
       reportsList.innerHTML = '<p>Belum ada laporan.</p>';
@@ -97,10 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
       latitudeInput.value = '';
       longitudeInput.value = '';
       loadReports();
+      loadGroups();
     } catch (error) {
       status.textContent = error.message;
     }
   });
 
+  initMap();
   loadReports();
+  loadGroups();
 });

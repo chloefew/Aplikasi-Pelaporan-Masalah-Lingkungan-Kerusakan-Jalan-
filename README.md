@@ -5,7 +5,7 @@ Aplikasi ini dirancang untuk membantu masyarakat melaporkan kerusakan jalan kepa
 Fitur utama:
 - Laporan dilengkapi lokasi GPS secara realtime.
 - Bukti foto kerusakan dapat diunggah langsung dari perangkat.
-- Riwayat laporan ditampilkan untuk memudahkan pemantauan.
+- Riwayat laporan ditampilkan untuk memudahkan pemantauan secara langsung.
 
 ## Struktur Proyek
 - `server.py` - backend Python Flask untuk menerima laporan.

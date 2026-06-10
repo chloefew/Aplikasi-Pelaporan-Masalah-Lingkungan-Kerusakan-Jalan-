@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aplikasi Pelaporan Kerusakan Jalan</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+e2kGQYk3G6k6Qe3gqkQbKp3p1wQv+0bM2GmY3o2E=" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+  <style>
+    #map { height: 400px; margin-bottom: 12px; }
+    .leaflet-container { background: #fff; }
+  </style>
 </head>
 <body>
   <header>
@@ -18,6 +24,14 @@
       <form id="report-form">
         <label for="place">Lokasi / Nama Jalan</label>
         <input type="text" id="place" name="place" placeholder="Contoh: Jalan Raya Sudirman" />
+
+        <label for="category">Kategori</label>
+        <select id="category" name="category">
+          <option value="jalan">Jalan Rusak</option>
+          <option value="sampah">Sampah</option>
+          <option value="lampu">Lampu Mati</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
 
         <label for="description">Deskripsi Kerusakan</label>
         <textarea id="description" name="description" rows="4" placeholder="Contoh: Jalan berlubang, retak, atau tergenang air..."></textarea>
@@ -46,7 +60,8 @@
     </section>
 
     <section class="card">
-      <h2>Riwayat Laporan</h2>
+      <h2>Peta Laporan</h2>
+      <div id="map"></div>
       <div id="reports-list" class="reports-list">Memuat laporan...</div>
     </section>
   </main>
@@ -56,5 +71,7 @@
   </footer>
 
   <script src="app.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7g2B8fX2v5N0s6q6mYVv1b4V3qQfXh3j2g9WgA=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 </body>
 </html>
