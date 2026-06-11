@@ -2,10 +2,10 @@
 Tugas projek pemrograman komputer masalah yang dijadikan aplikasi
 Aplikasi ini dirancang untuk membantu masyarakat melaporkan kerusakan jalan kepada pemerintah dengan lebih cepat dan mudah.
 Nama Anggota Kelompok :
-1. Callysta Aurelia
-2. Iqbal Adityan Firdaus
-3. Aditya Pramana Putra
-4. Zeandra Keysa Pradhistya
+1. Callysta Aurelia (21110125140138)
+2. Iqbal Adityan Firdaus (21110125140143)
+3. Aditya Pramana Putra (21110125140189)
+4. Zeandra Keysa Pradhistya (21110125140194)
 
 Fitur utama:
 - Laporan dilengkapi lokasi GPS secara realtime.
