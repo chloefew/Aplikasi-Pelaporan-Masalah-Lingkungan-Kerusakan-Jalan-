@@ -1,6 +1,11 @@
 # Aplikasi Pelaporan Masalah Lingkungan - Kerusakan Jalan
-
+Tugas projek pemrograman komputer masalah yang dijadikan aplikasi
 Aplikasi ini dirancang untuk membantu masyarakat melaporkan kerusakan jalan kepada pemerintah dengan lebih cepat dan mudah.
+Nama Anggota Kelompok :
+1. Callysta Aurelia
+2. Iqbal Adityan Firdaus
+3. Aditya Pramana Putra
+4. Zeandra Keysa Pradhistya
 
 Fitur utama:
 - Laporan dilengkapi lokasi GPS secara realtime.
@@ -38,5 +43,7 @@ Fitur utama:
 2. Tekan tombol "Dapatkan Lokasi" untuk mengambil koordinat GPS.
 3. Unggah foto bukti kerusakan jalan.
 4. Tekan tombol "Kirim Laporan".
+
+
 
 Aplikasi ini bisa dikembangkan lebih lanjut dengan fitur validasi, notifikasi, dan dashboard pengelolaan laporan untuk pemerintah.
